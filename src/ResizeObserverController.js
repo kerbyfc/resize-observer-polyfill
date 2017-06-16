@@ -220,6 +220,9 @@ export default class ResizeObserverController {
      * @returns {void}
      */
     onTransitionEnd_({propertyName}) {
+        if (!propertyName) {
+            return;
+        }
         // Detect whether transition may affect dimensions of an element.
         const isReflowProperty = transitionKeys.some(key => {
             return !!~propertyName.indexOf(key);

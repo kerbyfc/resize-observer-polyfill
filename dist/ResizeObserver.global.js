@@ -451,7 +451,10 @@ ResizeObserverController.prototype.disconnect_ = function () {
  * @returns {void}
  */
 ResizeObserverController.prototype.onTransitionEnd_ = function (ref) {
-        var propertyName = ref.propertyName;
+    var propertyName = ref.propertyName;
+    if (!propertyName) {
+        return;
+    }
 
     // Detect whether transition may affect dimensions of an element.
     var isReflowProperty = transitionKeys.some(function (key) {
